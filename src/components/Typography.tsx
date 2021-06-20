@@ -1,7 +1,7 @@
-import React, { ComponentProps, useMemo, ReactNode } from 'react';
-import { StyleSheet, StyleProp, TextStyle } from 'react-native';
-import { Text } from 'react-native-paper';
-import { vScale } from '~/libs/scale';
+import React, {ComponentProps, useMemo, ReactNode} from 'react';
+import {StyleSheet, StyleProp, TextStyle} from 'react-native';
+import {Text} from 'react-native-paper';
+import {vScale} from '../libs/scale';
 
 type TextProps = {
   style?: StyleProp<TextStyle>;
@@ -12,7 +12,7 @@ type TextProps = {
 
 const getColor = (color?: string): StyleProp<TextStyle> => {
   return {
-    color: color ? color : '#000',
+    color: color ? color : '#FFFFFF',
   };
 };
 
@@ -22,12 +22,7 @@ const getFontWeight = (bold?: boolean): StyleProp<TextStyle> => {
   };
 };
 
-export const H1 = ({
-  style,
-  color,
-  bold,
-  ...props
-}: TextProps): JSX.Element => {
+export const H1 = ({style, color, bold, ...props}: TextProps): JSX.Element => {
   const customStyle = useMemo<StyleProp<TextStyle>>(() => {
     return [styles.H1, getColor(color), getFontWeight(bold), style];
   }, [style, color, bold]);
@@ -35,12 +30,7 @@ export const H1 = ({
   return <Text style={customStyle} {...props} />;
 };
 
-export const H2 = ({
-  style,
-  color,
-  bold,
-  ...props
-}: TextProps): JSX.Element => {
+export const H2 = ({style, color, bold, ...props}: TextProps): JSX.Element => {
   const customStyle = useMemo<StyleProp<TextStyle>>(() => {
     return [styles.H2, getColor(color), getFontWeight(bold), style];
   }, [style, color, bold]);
@@ -48,12 +38,7 @@ export const H2 = ({
   return <Text style={customStyle} {...props} />;
 };
 
-export const H3 = ({
-  style,
-  color,
-  bold,
-  ...props
-}: TextProps): JSX.Element => {
+export const H3 = ({style, color, bold, ...props}: TextProps): JSX.Element => {
   const customStyle = useMemo<StyleProp<TextStyle>>(() => {
     return [styles.H3, getColor(color), getFontWeight(bold), style];
   }, [style, color, bold]);
@@ -61,12 +46,7 @@ export const H3 = ({
   return <Text style={customStyle} {...props} />;
 };
 
-export const H4 = ({
-  style,
-  color,
-  bold,
-  ...props
-}: TextProps): JSX.Element => {
+export const H4 = ({style, color, bold, ...props}: TextProps): JSX.Element => {
   const customStyle = useMemo<StyleProp<TextStyle>>(() => {
     return [styles.H4, getColor(color), getFontWeight(bold), style];
   }, [style, color, bold]);
@@ -74,7 +54,7 @@ export const H4 = ({
   return <Text style={customStyle} {...props} />;
 };
 
-export const P = ({ style, color, bold, ...props }: TextProps): JSX.Element => {
+export const P = ({style, color, bold, ...props}: TextProps): JSX.Element => {
   const customStyle = useMemo<StyleProp<TextStyle>>(() => {
     return [styles.P, getColor(color), getFontWeight(bold), style];
   }, [style, color, bold]);
