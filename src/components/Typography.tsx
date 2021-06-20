@@ -12,7 +12,7 @@ type TextProps = {
 
 const getColor = (color?: string): StyleProp<TextStyle> => {
   return {
-    color: color ? color : '#FFFFFF',
+    color: color ? color : '#000000',
   };
 };
 

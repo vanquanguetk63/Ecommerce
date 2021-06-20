@@ -1,12 +1,12 @@
 import React from 'react';
 import {SafeAreaView, Text} from 'react-native';
 
-const HomePage = (): JSX.Element => {
+const PaymentPage = (): JSX.Element => {
   return (
     <SafeAreaView>
-      <Text>HomePage</Text>
+      <Text>PaymentPage</Text>
     </SafeAreaView>
   );
 };
 
-export default HomePage;
+export default PaymentPage;
