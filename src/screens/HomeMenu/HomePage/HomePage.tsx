@@ -4,8 +4,8 @@ import {
   View,
   TouchableOpacity,
   StyleSheet,
-  FlatList,
   Image,
+  ScrollView,
 } from 'react-native';
 import IconFavourite from '../../../components/icons/IconFavourite';
 import IconGift from '../../../components/icons/IconGift';
@@ -14,17 +14,28 @@ import IconSell from '../../../components/icons/IconSell';
 import {H1, H4, SmallText} from '../../../components/Typography';
 import {hScale, vScale} from '../../../libs/scale';
 import MenuData from '../../../resources/mockdata/MenuData';
+import {useNavigation} from '@react-navigation/core';
+import {HomeNavigatorNavProps} from '../../../routes/MainNavigator/MainNavigator';
 
 const HomePage = (): JSX.Element => {
+  const navigation = useNavigation<HomeNavigatorNavProps>();
+
+  const navigateToScreen = screen => {
+    navigation.navigate(screen);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
-      <View style={{paddingHorizontal: hScale(16)}}>
+      <ScrollView
+        style={{paddingHorizontal: hScale(16)}}
+        showsVerticalScrollIndicator={false}>
         <H1 bold>Home</H1>
         <H1 bold>Casourel</H1>
-
         <View style={styles.listChoice}>
           <View style={styles.customChoice}>
-            <TouchableOpacity style={styles.customButton}>
+            <TouchableOpacity
+              style={styles.customButton}
+              onPress={() => navigateToScreen('CategoryPage')}>
               <IconMenu />
             </TouchableOpacity>
             <SmallText color="#1F53E4">Categories</SmallText>
@@ -48,45 +59,30 @@ const HomePage = (): JSX.Element => {
             <SmallText color="#1F53E4">Best Selling</SmallText>
           </View>
         </View>
-        <H1 bold style={{textAlign: 'center', marginVertical: vScale(30)}}>
+        <H1 bold style={styles.textMenu}>
           Sales
         </H1>
 
-        <FlatList
-          data={MenuData}
-          keyExtractor={(item, index) => index.toString() + ''}
-          showsVerticalScrollIndicator={false}
-          renderItem={({item}) => (
-            <View
-              style={{
-                width: '48%',
-                height: vScale(251),
-                backgroundColor: '#FFFFFF',
-                marginRight: hScale(10),
-                marginBottom: vScale(10),
-                borderRadius: 12,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <View
-                style={{
-                  height: vScale(140),
-                  width: '100%',
-                  marginBottom: vScale(20),
-                }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            justifyContent: 'space-between',
+          }}>
+          {MenuData?.map((item, index) => (
+            <TouchableOpacity style={styles.menuItem} key={index}>
+              <View style={styles.menuImage}>
                 <Image
                   resizeMode="contain"
                   source={item?.images}
-                  style={{width: '100%', height: '100%'}}
+                  style={styles.detailImage}
                 />
               </View>
               <H4>{item?.name}</H4>
-            </View>
-          )}
-          numColumns={2}
-          style={{marginBottom: vScale(260)}}
-        />
-      </View>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -114,6 +110,22 @@ const styles = StyleSheet.create({
     width: vScale(81),
     alignItems: 'center',
   },
+  menuItem: {
+    width: '48%',
+    height: vScale(251),
+    backgroundColor: '#FFFFFF',
+    marginBottom: vScale(16),
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  menuImage: {
+    height: vScale(140),
+    width: '100%',
+    marginBottom: vScale(20),
+  },
+  detailImage: {width: '100%', height: '100%'},
+  textMenu: {textAlign: 'center', marginVertical: vScale(30)},
 });
 
 export default HomePage;

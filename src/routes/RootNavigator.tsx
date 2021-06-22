@@ -8,6 +8,7 @@ import MainNavigator, {MainNavigatorProps} from './MainNavigator/MainNavigator';
 import LoginPage from '../screens/OnBoarding/LoginPage/LoginPage';
 import SignUpPage from '../screens/OnBoarding/SignUpPage/SignUpPage';
 import {NavigatorScreenParams} from '@react-navigation/native';
+import CategoryPage from '../screens/HomeMenu/HomePage/CategoryPage';
 
 const Stack = createStackNavigator();
 
@@ -15,6 +16,7 @@ export type RootNavigatorProps = {
   LoginPage: undefined;
   SignUpPage: undefined;
   MainNavigator: NavigatorScreenParams<MainNavigatorProps>;
+  CategoryPage: undefined;
 };
 
 export type LoginPageProps = StackNavigationProp<

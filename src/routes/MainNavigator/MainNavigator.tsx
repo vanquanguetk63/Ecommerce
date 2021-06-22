@@ -18,24 +18,28 @@ import IconHome from '../../components/icons/IconHome';
 import IconFind from '../../components/icons/IconFind';
 import IconPayment from '../../components/icons/IconPayment';
 import IconProfile from '../../components/icons/IconProfile';
+import HomeNavigator from './HomeNavigator';
 
 export type MainNavigatorProps = {
-  HomePage: undefined;
+  HomeNavigator: undefined;
 };
 
-export type HomePageRouteProps = RouteProp<MainNavigatorProps, 'HomePage'>;
+export type HomeNavigatorRouteProps = RouteProp<
+  MainNavigatorProps,
+  'HomeNavigator'
+>;
 
-export type HomePageNavProps = CompositeNavigationProp<
-  BottomTabNavigationProp<MainNavigatorProps, 'HomePage'>,
+export type HomeNavigatorNavProps = CompositeNavigationProp<
+  BottomTabNavigationProp<MainNavigatorProps, 'HomeNavigator'>,
   StackNavigationProp<RootNavigatorProps>
 >;
 
 const BottomTabNavigator = createBottomTabNavigator();
 
-const HomeNavigator = () => {
+const MainNavigator = () => {
   return (
     <BottomTabNavigator.Navigator
-      initialRouteName="HomePage"
+      initialRouteName="HomeNavigator"
       tabBarOptions={{
         activeTintColor: '#0001FC',
         inactiveTintColor: '#0A3040',
@@ -45,7 +49,7 @@ const HomeNavigator = () => {
       }}>
       <BottomTabNavigator.Screen
         name="HomePage"
-        component={HomePage}
+        component={HomeNavigator}
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({focused}) => (
@@ -87,4 +91,4 @@ const HomeNavigator = () => {
   );
 };
 
-export default HomeNavigator;
+export default MainNavigator;
